@@ -1,0 +1,6 @@
+[submodule "alsa-lib_src"]
+	path = alsa-lib_src
+	url = git://git.alsa-project.org/alsa-lib.git
+[submodule "salsa-lib_src"]
+	path = salsa-lib_src
+	url = git://git.kernel.org/pub/scm/linux/kernel/git/tiwai/salsa-lib.git
