@@ -1,9 +1,9 @@
 {
 	'variables':{
-		#'library' : 'shared_library',
-		'library' : 'static_library',
-		'alsa_lib_type' : 'full',
-		#'alsa_lib_type' : 'salsa',
+		'library' : 'shared_library',
+		#'library' : 'static_library',
+		#'alsa_lib_type' : 'full',
+		'alsa_lib_type' : 'salsa',
 	},
 	'target_defaults': {
 		'configurations': {
@@ -25,12 +25,17 @@
 			['OS=="linux" and target_arch=="x64"',{
 				'cflags':[
 					'-m64',
-					'-fvisibility=hidden',
+					
 				],
 				'ldflags':[
 					'-m64',
 				],
 			}],	
+			['target_arch=="x64" and library == "static_library"',{
+				'cflags':[
+					'-fvisibility=hidden',
+				],
+			}],
 			['OS in "linux android" and library == "shared_library"',{
 				'defines':[
 					'PIC', #for dynamic libraries only
@@ -261,6 +266,58 @@
 						'salsa-lib_src/src',
 						'salsa_config',
 					],
+					'defines':[
+						#'__SALSA_EXPORT_FUNC',
+					],
+					'direct_dependent_settings': {
+						'include_dirs': [
+							'includes',
+						],
+					 },
+					'copies':[
+						{
+							'destination':'includes/alsa',
+							'files':[
+								'salsa_config/asoundlib.h',
+								#'salsa-lib_src/src/asoundlib.h',
+								'salsa_config/version.h',
+								'salsa_config/recipe.h',
+								'salsa-lib_src/src/asoundef.h',
+								'salsa-lib_src/src/asound.h',
+								'salsa-lib_src/src/ctl_func.h',
+								'salsa-lib_src/src/ctl_macros.h',
+								'salsa-lib_src/src/global.h',
+								'salsa-lib_src/src/input.h',
+								'salsa-lib_src/src/output.h',
+								'salsa-lib_src/src/error.h',
+								'salsa-lib_src/src/conf.h',
+								'salsa-lib_src/src/pcm.h',
+								'salsa-lib_src/src/pcm_func.h',
+								'salsa-lib_src/src/pcm_macros.h',
+								'salsa-lib_src/src/rawmidi.h',
+								'salsa-lib_src/src/timer.h',
+								'salsa-lib_src/src/timer_func.h',
+								'salsa-lib_src/src/timer_macros.h',
+								'salsa-lib_src/src/hwdep.h',
+								'salsa-lib_src/src/hwdep_func.h',
+								'salsa-lib_src/src/hwdep_macros.h',
+								'salsa-lib_src/src/hcontrol.h',
+								'salsa-lib_src/src/hctl_func.h',
+								'salsa-lib_src/src/hctl_macros.h',
+								'salsa-lib_src/src/control.h',
+								'salsa-lib_src/src/mixer.h',
+								'salsa-lib_src/src/mixer_func.h',
+								'salsa-lib_src/src/mixer_macros.h',
+								'salsa-lib_src/src/seq_event.h',
+								'salsa-lib_src/src/seq.h',
+								'salsa-lib_src/src/seqmid.h',
+								'salsa-lib_src/src/rawmidi_func.h',
+								'salsa-lib_src/src/rawmidi_macros.h',
+								#'salsa-lib_src/src/seq_midi_event.h',
+							],
+						},
+					],
+					
 					'sources' : [],
 					'conditions':[
 						['OS in "linux android"',{

@@ -1,6 +1,8 @@
 #ifndef __ALSA_RECIPE_H
 #define __ALSA_RECIPE_H
 
+#define HAVE_ENDIAN_H
+
 /* Build with TLV support */
 #define SALSA_HAS_TLV_SUPPORT	1
 
