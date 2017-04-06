@@ -2,3 +2,5 @@
 /build.linux64/
 /build.android/
 /includes/
+/node_modules
+/.github-authentication-cache

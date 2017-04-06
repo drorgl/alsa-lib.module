@@ -1,0 +1,29 @@
+{
+  "name": "alsa-lib.module",
+  "version": "1.0.28",
+  "description": "alsa-lib module wrapper",
+  "main": "include_dirs.js",
+  "scripts": {
+    "preinstall" : "git submodule init && git submodule update || true",
+    "test": "node-gyp configure build",
+    "pack" : "nnbu-pack -s"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/drorgl/alsa-lib.module.git"
+  },
+  "keywords": [
+    "alsa-lib",
+    "c++"
+  ],
+  "gypfile": false,
+  "bugs": {
+    "url": "https://github.com/drorgl/alsa-lib.module/issues"
+  },
+  "homepage": "https://github.com/drorgl/alsa-lib.module#readme.md",
+  "devDependencies": {},
+  "dependencies": {
+    "node-gyp": "drorgl/node-gyp",
+	"node-native-build-utilities": "drorgl/node-native-build-utilities"
+  }
+}
