@@ -4,9 +4,10 @@
   "description": "alsa-lib module wrapper",
   "main": "include_dirs.js",
   "scripts": {
-    "preinstall" : "git submodule init && git submodule update || true",
-    "test": "node-gyp configure build",
-    "pack" : "nnbu-pack -s"
+	"install": "echo call standalone to build and install this module",
+    "preinstall": "git submodule init && git submodule update || true",
+    "standalone": "node-gyp configure  && node-gyp build",
+    "pack": "nnbu-pack -s"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,6 @@
   "devDependencies": {},
   "dependencies": {
     "node-gyp": "drorgl/node-gyp",
-	"node-native-build-utilities": "drorgl/node-native-build-utilities"
+    "node-native-build-utilities": "drorgl/node-native-build-utilities"
   }
 }
